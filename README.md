@@ -15,4 +15,4 @@ para trocar o tema do jogo e contagem de erros
     - criado contagem de erros
 
 #### Uso:
-- [ABRA O JOGO NESTE LINK](https://github.com/angelitasantos)
+- [ABRA O JOGO NESTE LINK](https://angelitasantos.github.io/dio-tqi-javascript-jogo-memoria/)
