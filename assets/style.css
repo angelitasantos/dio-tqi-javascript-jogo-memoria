@@ -76,3 +76,18 @@ button {
 .card.flip {
     transform: rotateY(180deg);
 }
+
+@media (max-width: 700px) {
+    .memory-game {
+        width: 540px;
+    }
+
+    .card {
+        height: calc(33.33% - 10px);
+        width: calc(25% - 10px);
+    }
+
+    .desktop {
+        display: none;
+    }
+}

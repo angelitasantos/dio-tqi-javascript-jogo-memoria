@@ -1,23 +1,9 @@
-// para saber o tamanho da tela do usuário
-var screenSize = window.innerWidth;
-var maxPares = 9; //maximo de pares possiveis
-
 // para selecionar todos os cards
 const cards = document.querySelectorAll('.card');
-const mobile = document.querySelectorAll('.mobile');
 
 let hasFlippedCard = false;
 let firstCard, secondCard;
 let lockBoard = false;
-
-// trocar temas e reiniciar
-const temasButton = document.getElementsByClassName('temas-button')[0];
-const resetButton = document.getElementsByClassName('reset-button')[0];
-const cardFace = document.querySelectorAll('.card-front');
-const cardBack = document.querySelectorAll('.card-back');
-let travaClick = false; //nao deixar virar mais cartas
-let temas = ['img_theme1', 'img_theme2']; //nome das pastas dos temas
-let current = 0; //posicao na array de temas
 
 
 // para adicionar a palavra flip no card que for clicado
@@ -68,22 +54,27 @@ function resetBoard() {
 
 // embaralhar os cards através de uma função imediata
 (function shuffle() {
-    if (screenSize < 700) {
-        mobile.forEach((mobile) => {
-            let ramdonPosition = Math.floor(Math.random() * (6 * 2));
-            mobile.style.order = ramdonPosition;
-        })
-    } else {
-        cards.forEach((card) => {
-            let ramdonPosition = Math.floor(Math.random() * (maxPares * 2));
-            card.style.order = ramdonPosition;
-        })
-    }
+    cards.forEach((card) => {
+        let ramdonPosition = Math.floor(Math.random() * 18);
+        card.style.order = ramdonPosition;
+    })
 })();
 
 cards.forEach((card) => {
     card.addEventListener('click', flipCard)
 })
+
+
+// trocar temas e reiniciar
+const temasButton = document.getElementsByClassName('temas-button')[0];
+const resetButton = document.getElementsByClassName('reset-button')[0];
+
+const maxPares = 9; //maximo de pares possiveis
+const cardFace = document.querySelectorAll('.card-front');
+const cardBack = document.querySelectorAll('.card-back');
+let travaClick = false; //nao deixar virar mais cartas
+let temas = ['img_theme1', 'img_theme2']; //nome das pastas dos temas
+let current = 0; //posicao na array de temas
 
 //função para reinicar o tema atual do jogo
 function resetTheme() {
@@ -95,19 +86,11 @@ function resetTheme() {
     //espera as cartas desvirarem para embaralhar
     setTimeout(() => {
         //embaralha as cartas e adiciona evento de click
-        if (screenSize < 700) {
-            mobile.forEach((mobile) => {
-                let ramdonPosition = Math.floor(Math.random() * (6 * 2));
-                mobile.style.order = ramdonPosition;
-                mobile.addEventListener('click', flipCard);
-            })
-        } else {
-            cards.forEach((card) => {
-                let randomPosition = Math.floor(Math.random() * (maxPares * 2));
-                card.style.order = randomPosition;
-                card.addEventListener('click', flipCard);
-            });
-        }
+        cards.forEach((card) => {
+            let randomPosition = Math.floor(Math.random() * (maxPares * 2));
+            card.style.order = randomPosition;
+            card.addEventListener('click', flipCard);
+        });
     }, 500);
     // reativa o mouse click e reseta cartas clicadas
     resetBoard();
