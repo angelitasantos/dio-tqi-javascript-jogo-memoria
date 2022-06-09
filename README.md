@@ -9,7 +9,7 @@ Tarso Galvão Github: https://github.com/surtarso/javaScript-Projects
 para trocar o tema do jogo e contagem de erros
 
 #### Alterações do projeto da aula:
-    - aumento do numero de cartas de 6 para 9 pares
+    - diferencia o numero de cartas: 6 pares para largura até 700px e 9 pares para largura acima de 700px
     - criado botão para mudar de tema (pode escolher entre dois temas)
     - criado botão para reiniciar o tema ativo
     - criado contagem de erros
