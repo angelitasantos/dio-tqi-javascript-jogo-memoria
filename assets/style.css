@@ -1,0 +1,171 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(96, 255, 202);
+}
+
+header {
+    padding: 5px 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+button {
+    width: 140px;
+    height: 30px;
+    margin-top: 5px;
+    padding: 5px 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: darkblue;
+    color: #FFF;
+    border-radius: 25px;
+}
+
+button:hover {
+    background-color: blue;
+    color: #FFF;
+}
+
+.container {
+    height: 90vh;
+    display: flex;
+}
+
+.good-luck {
+    font-size: 1rem;
+}
+
+.memory-game {
+    height: 540px;
+    width: 810px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+    /* perspectiva do usuario no eixo z, quanto maior, maior o efeito da perspectiva */
+}
+
+.card {
+    height: calc(33.333% - 10px);
+    width: calc(16.66% - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    cursor: pointer;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    /* adiciona perspectiva 3d, para que o elemento nao fique achatada no plano */
+    transition: transform .9s;
+    /* adiciona efeito de movimento ao flip do card */
+}
+
+.card:active {
+    transform: scale(0.97);
+    transition: transform .2s;
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    position: absolute;
+    border-radius: 5px;
+    background: rgb(3, 190, 181);
+    backface-visibility: hidden;
+    /* todo elemento tem uma frente e um verso (ao contrario, como um espelho.) 
+    essa propriedade retira o verso */
+}
+
+.card-front {
+    transform: rotateY(180deg);
+    /* antes, o verso aparecia transparente, pois ambas as imagens tem position absolute, ao girar no eixo Y, 
+    elas ficarão com os versos virados */
+}
+
+/* flip card animation */
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+
+/* dialog */
+.dialogWindowArea {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: none;
+    transition: all ease .5s;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.dialogWindowBody {
+    width: 280px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #999;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+    padding: 40px 0;
+}
+
+.dialogHeader {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    text-transform: uppercase;
+}
+
+.dialogBody {
+    padding: 30px;
+    text-align: center;
+}
+
+.dialogFooter {
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    text-transform: uppercase;
+}
+
+.dialogCancelButton {
+    padding: 10px 30px;
+    border-radius: 20px;
+    background-color: #FFA500;
+    color: #FFF;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dialogCancelButton:hover {
+    background-color: #f4bf5c;
+    color: #000000;
+}
+
+@media (max-width: 700px) {   
+    .memory-game {
+        width: 540px;
+    }
+
+    .card {
+        height: calc(33.33% - 10px);
+        width: calc(25% - 10px);
+    }
+
+    .desktop {
+        display: none;
+    }
+}
